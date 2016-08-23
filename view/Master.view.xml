@@ -6,9 +6,6 @@
    	id="masterList"
    	headerText="Airlines"
    	itemPress="onItemPress"
-   	items="{
-   		path:'/Airlines'
-   	}"
    	>
    		<items>
    			<StandardListItem
