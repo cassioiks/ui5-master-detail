@@ -25,20 +25,5 @@
 				<Text text="Price" />
 			</Column>
 		</columns>
-		<items>
-			<ColumnListItem>
-				<cells>
-					<ObjectIdentifier
-						title="{ToFlights/Carrid}"/>
-					<Text
-						text="{ToFlights/Connid}" />
-					<Text
-						text="{ToFlights/Fldate}" />
-					<ObjectNumber
-							number="{ToFlights/Price}"
-							unit="{ToFlights/Currency}" />
-				</cells>
-			</ColumnListItem>
-		</items>
 	</Table>
 </mvc:View>

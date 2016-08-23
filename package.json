@@ -1,0 +1,11 @@
+{
+"dependencies": {
+    "gulp": "^3.9.0",
+    "gulp-env": "^0.2.0",
+    "gulp-ui5-preload": "^1.2.0",
+    "gulp-webserver": "^0.9.1"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  }
+}

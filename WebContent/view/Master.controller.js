@@ -13,6 +13,7 @@ sap.ui.controller("lego.ui5.demo.view.Master", {
 		// var carrid = Context.getProperty("Carrid");
 		
 		var view2 = lego.ui5.demo.Utils.UIHelper.getView2().getView();	
+		var detailTable = view2.byId("detailsTable");
 
 		var oTemplate = new sap.m.ColumnListItem(  
 		  {cells: [   
@@ -23,12 +24,23 @@ sap.ui.controller("lego.ui5.demo.view.Master", {
 		          ]  
 		  });   
 
-		var model = this.getView().getModel();
-		var that = this;
+		// var modelURL = this.serviceEndPoint+Context.sPath+"/ToFlights?$format=json";
+		// var omodel = new sap.ui.model.json.JSONModel(modelURL);
+		// omodel.attachRequestCompleted(function(oEvent){
+		// 	var model = oEvent.getSource();
+		// 	// view2.setModel('Flights',omodel);
+		// 	// view2.byId("detailsTable").setModel(model);
+		// });
 
+		var model = this.getView().getModel();
+		
+		// view2.setBindingContext(Context);
+		// view2.byId("detailsTable").setBindingContext(Context);
+
+		var that = this;
 		model.createBindingContext(Context.sPath,Context,{expand:'ToFlights'},function(context){
 			that.getView().setModel(context.oModel);
-			view2.setBindingContext(context);
+			detailTable.bindItems("/AirlineSet/ToFlights",oTemplate);
 		});
 
 		
