@@ -13,6 +13,6 @@ sap.ui.controller("lego.ui5.demo.view.Master", {
 		// Get the Flights from the selected Airline, and set the model to the details page
 		var sUrl = "http://<host>:<port>/<service_end_point>/Airlines(" + carrid + ")/ToFlights?$format=json";
 		var omodel = new sap.ui.model.json.JSONModel(sUrl);
-		sap.ui.getCore().byId("idPrdList").setModel(omodel);
+		sap.ui.getCore().byId("detailList").setModel(omodel);
    }
 });
