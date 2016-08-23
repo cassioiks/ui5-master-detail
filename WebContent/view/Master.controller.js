@@ -1,5 +1,5 @@
 sap.ui.controller("sap.ui5.demo.view.Master", {
-   serviceEndPoint = "",
+   serviceEndPoint = "http://dkasub.corp.lego.com:21000/sap/opu/odata/sap/Z_GATEWAY_TRAINING_XX_SRV",
    onInit: function() {
    		var modelURL = serviceEndPoint+"/AirlineSet?$format=json";
    		var omodel = new sap.ui.model.json.JSONModel(sUrl);
