@@ -1,4 +1,4 @@
-sap.ui.controller("lego.ui5.demo.view.Master", {
+sap.ui.controller("sap.ui5.demo.view.Master", {
    serviceEndPoint = "http://<host>:<port>/<service_end_point>",
    onInit: function() {
    		var modelURL = serviceEndPoint+"/Airlines?$format=json";

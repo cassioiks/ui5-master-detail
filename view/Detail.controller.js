@@ -1,3 +1,3 @@
-sap.ui.controller("lego.ui5.demo.view.Detail", {
+sap.ui.controller("sap.ui5.demo.view.Detail", {
 
 });
