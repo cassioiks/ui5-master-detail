@@ -1,7 +1,7 @@
 sap.ui.controller("sap.ui5.demo.view.Master", {
-   serviceEndPoint = "http://<host>:<port>/<service_end_point>",
+   serviceEndPoint = "",
    onInit: function() {
-   		var modelURL = serviceEndPoint+"/Airlines?$format=json";
+   		var modelURL = serviceEndPoint+"/AirlineSet?$format=json";
    		var omodel = new sap.ui.model.json.JSONModel(sUrl);
 		this.getView().byId('masterList').setModel(omodel);
    },   
@@ -12,7 +12,7 @@ sap.ui.controller("sap.ui5.demo.view.Master", {
 		var carrid = Context.getProperty("Carrid");
 			
 		// Get the Flights from the selected Airline, and set the model to the details page
-		var sUrl = serviceEndPoint+"/Airlines(" + carrid + ")/ToFlights?$format=json";
+		var sUrl = serviceEndPoint+"/AirlineSet(" + carrid + ")/ToFlights?$format=json";
 		var omodel = new sap.ui.model.json.JSONModel(sUrl);
 		sap.ui.getCore().byId("detailsTable").setModel(omodel);
    }
