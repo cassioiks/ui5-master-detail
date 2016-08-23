@@ -1,19 +1,59 @@
-sap.ui.controller("sap.ui5.demo.view.Master", {
-   serviceEndPoint = "http://dkasub.corp.lego.com:21000/sap/opu/odata/sap/Z_GATEWAY_TRAINING_XX_SRV",
+sap.ui.require("lego.ui5.demo.Utils.UIHelper");
+sap.ui.controller("lego.ui5.demo.view.Master", {
+   serviceEndPoint : "/model",
    onInit: function() {
-   		var modelURL = serviceEndPoint+"/AirlineSet?$format=json";
-   		var omodel = new sap.ui.model.json.JSONModel(sUrl);
-		this.getView().byId('masterList').setModel(omodel);
+   		var modelURL = this.serviceEndPoint;
+   		var omodel = new sap.ui.model.odata.v2.ODataModel(modelURL);
+		this.getView().setModel(omodel);
    },   
    onItemPress: function(oEvent){
 		// To get the selected Airline ID
 		var oItemSelect = oEvent.getParameter("listItem");
 		var Context = oItemSelect.getBindingContext();
-		var carrid = Context.getProperty("Carrid");
-			
+		// var carrid = Context.getProperty("Carrid");
+		
+		var view2 = lego.ui5.demo.Utils.UIHelper.getView2().getView();	
+
+		var oTemplate = new sap.m.ColumnListItem(  
+		  {cells: [   
+		          new sap.m.Text({text : "{Carrid}"}),  
+		          new sap.m.Text({text : "{Connid}"}),
+		          new sap.m.Text({text : "{Fldate}"}),
+		          new sap.m.ObjectNumber({number : "{Price}", unit:"{Currency}"})
+		          ]  
+		  });   
+
+		var model = this.getView().getModel();
+		var that = this;
+
+		model.createBindingContext(Context.sPath,Context,{expand:'ToFlights'},function(context){
+			that.getView().setModel(context.oModel);
+			view2.setBindingContext(context);
+		});
+
+		
+		// var omodel = this.getView().getModel();
+
+		// view2.bindElement(oEvent.getParameter("listItem").getBindingContextPath(),{expand:'ToFlights'});
+
+
+		// omodel.read(Context.sPath,{success: function(oData,response){
+		// 	view2.byId("detailsTable").setModel(oData);
+		// 	alert('asdasd');
+		// 		}
+		// });
 		// Get the Flights from the selected Airline, and set the model to the details page
-		var sUrl = serviceEndPoint+"/AirlineSet(" + carrid + ")/ToFlights?$format=json";
-		var omodel = new sap.ui.model.json.JSONModel(sUrl);
-		sap.ui.getCore().byId("detailsTable").setModel(omodel);
+		// var modelURL = this.serviceEndPoint+Context+"/ToFlights?$format=json";
+		// var omodel = new sap.ui.model.odata.v2.ODataModel(modelURL);
+		// var omodel = new sap.ui.model.json.JSONModel(modelURL);
+		// omodel.attachRequestCompleted(function(oEvent){
+		// 	var model = oEvent.getSource();
+		// 	// view2.setModel('Flights',omodel);
+		// 	// view2.byId("detailsTable").setModel(model);
+		// });
+		
+		// view2.setModel('Flights',omodel);
+		// view2.byId("detailsTable").setModel(omodel);
+		// view2.byId("detailsTable").bindData(omodel);
    }
 });

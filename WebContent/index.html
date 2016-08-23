@@ -4,26 +4,23 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta charset="utf-8">
 	<title>Sample Master-Detail app for Airlines and Flights</title>
-	<script src="resources/sap-ui-core.js"
+	<script 
+		src="resources/sap-ui-core.js" 
 		id="sap-ui-bootstrap"
 		data-sap-ui-theme="sap_bluecrystal"
-		data-sap-ui-libs="sap.m"
-		data-sap-ui-resourceroots='{
-                "sap.ui5.demo": "./"
-            }'>
+		data-sap-ui-libs="sap.m, sap.ui.commons"
+		data-sap-ui-resourceroots='{"lego.ui5.demo": "./"}'>
 	</script>
 	<script type="text/javascript">
-		sap.ui.getCore().attachInit(function () {
-			var app = new sap.m.SplitApp("MasterDetailApp",{mode : sap.m.SplitAppMode.ShowHideMode});
-        	var master = sap.ui.view({id:"master", viewName:"sap.ui5.demo.view.Master", type:sap.ui.core.mvc.ViewType.XML});
+		// sap.ui.getCore().attachInit(function () {
+			var app = new sap.m.SplitApp("MasterDetailApp",{});
+        	var master = sap.ui.view({id:"master", viewName:"lego.ui5.demo.view.Master", type:sap.ui.core.mvc.ViewType.XML});
 			app.addMasterPage(master);
 		
-			var detail = sap.ui.view({id:"detail", viewName:"sap.ui5.demo.view.Detail", type:sap.ui.core.mvc.ViewType.XML});
+			var detail = sap.ui.view({id:"detail", viewName:"lego.ui5.demo.view.Detail", type:sap.ui.core.mvc.ViewType.XML});
 			app.addDetailPage(detail);
 			app.placeAt("content");
-		});
-		
-		
+		// });
 	</script>
 </head>
 <body class="sapUiBody" id="content">
