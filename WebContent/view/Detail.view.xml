@@ -1,0 +1,44 @@
+<mvc:View
+   xmlns="sap.m"
+   xmlns:mvc="sap.ui.core.mvc"
+   controllername="sap.ui5.demo.view.Detail">
+   	<Table id="detailsTable"
+		inset="false"
+		>
+		<headerToolbar>
+			<Toolbar>
+				<Title text="Flights" level="H2"/>
+			</Toolbar>
+		</headerToolbar>
+		<columns>
+			<Column>
+				<Text text="Airline ID" />
+			</Column>
+			<Column>
+				<Text text="Connection ID" />
+			</Column>
+			<Column>
+				<Text text="Flight Date" />
+			</Column>
+			<Column
+				hAlign="Right">
+				<Text text="Price" />
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem>
+				<cells>
+					<ObjectIdentifier
+						title="{Carrid}"/>
+					<Text
+						text="{Connid}" />
+					<Text
+						text="{Fldate}" />
+					<ObjectNumber
+							number="{Price}"
+							unit="{Currency}" />
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+</mvc:View>
